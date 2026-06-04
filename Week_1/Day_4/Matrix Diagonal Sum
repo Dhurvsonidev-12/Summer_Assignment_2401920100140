@@ -1,0 +1,49 @@
+Given a square matrix mat, return the sum of the matrix diagonals.
+
+Only include the sum of all the elements on the primary diagonal and all the elements on the secondary diagonal that are not part of the primary diagonal.
+
+ 
+
+Example 1:
+
+
+Input: mat = [[1,2,3],
+              [4,5,6],
+              [7,8,9]]
+Output: 25
+Explanation: Diagonals sum: 1 + 5 + 9 + 3 + 7 = 25
+Notice that element mat[1][1] = 5 is counted only once.
+
+
+
+
+
+//solution....
+
+
+
+class Solution {
+    public int diagonalSum(int[][] mat) {
+
+        if(mat.length == 1) return mat[0][0];
+        
+        int x = mat.length-1;
+        int sum = 0;
+
+        for(int m = 0; m <= x; m++) {
+            for(int n = 0; n <= x; n++) {
+
+                if(m == n || (m + n == x)) {
+                    sum += mat[m][n];
+                }
+
+            }
+        }
+
+        // if(mat.length%2 != 0) {
+        //     sum -= mat[mat.length/2][mat.length/2];
+        // }
+
+    return sum;
+    }
+}
