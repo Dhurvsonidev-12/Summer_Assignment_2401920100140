@@ -1,0 +1,27 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+public class Week1 {
+   public Week1() {
+   }
+
+   public static void main(String[] var0) {
+      KidUser var1 = new KidUser();
+      var1.a = 10;
+      var1.registerAccount();
+      var1.a = 18;
+      var1.registerAccount();
+      var1.bt = "Kids";
+      var1.requestBook();
+      var1.bt = "Fiction";
+      var1.requestBook();
+      System.out.println();
+      AdultUser var2 = new AdultUser();
+      var2.a = 5;
+      var2.registerAccount();
+      var2.a = 23;
+      var2.registerAccount();
+      var2.bt = "Kids";
+      var2.requestBook();
+      var2.bt = "Fiction";
+      var2.requestBook();
+   }
+}
