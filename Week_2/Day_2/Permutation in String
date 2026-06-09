@@ -1,0 +1,52 @@
+Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+
+In other words, return true if one of s1's permutations is the substring of s2.
+
+ 
+
+Example 1:
+
+Input: s1 = "ab", s2 = "eidbaooo"
+Output: true
+Explanation: s2 contains one permutation of s1 ("ba").
+
+
+
+
+class Solution {
+    public boolean checkInclusion(String s1, String s2) {
+
+        HashMap<Character, Integer> map1 = new HashMap<>();
+        HashMap<Character, Integer> map2 = new HashMap<>();
+        int i = 0;
+        int j = 0;
+
+        for (char c : s1.toCharArray()) {
+
+            map1.put(c, map1.getOrDefault(c, 0) + 1);
+
+        }
+
+        while (j < s2.length()) {
+            char c = s2.charAt(j);
+            map2.put(c, map2.getOrDefault(c, 0) + 1);
+
+            if ((j - i + 1) == s1.length()) {
+                if (map1.equals(map2)) {
+                    return true;
+                }
+                char ch = s2.charAt(i);
+
+                if ((map2.get(ch) - 1) == 0) {
+                    map2.remove(ch);
+                } else {
+                    map2.put(ch, map2.get(ch) - 1);
+                }
+                i++;
+            }
+            j++;
+        }
+
+        return false;
+    }
+}
