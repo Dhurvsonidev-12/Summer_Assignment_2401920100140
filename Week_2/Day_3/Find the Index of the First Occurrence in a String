@@ -1,0 +1,57 @@
+Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+ 
+
+Example 1:
+
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+
+
+
+
+
+
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+     StringBuilder sb = new StringBuilder();
+      StringBuilder str = new StringBuilder();
+
+      
+        sb.append(needle);
+      
+
+      int i = 0;
+      int j = 0;
+
+      while(j < haystack.length()) {
+        char s = haystack.charAt(j);
+        str.append(s);
+
+        if((j-i+1) == needle.length()) {
+
+            if(sb.toString().equals(str.toString())) {
+                return i;
+            } 
+
+            str.deleteCharAt(0);
+            
+            i++;
+        }
+
+        j++;
+      }
+      return -1;
+    }
+    
+
+
+//     class Solution {
+//     public int strStr(String haystack, String needle) {
+//         return haystack.indexOf(needle);
+//     }
+// }
+}
