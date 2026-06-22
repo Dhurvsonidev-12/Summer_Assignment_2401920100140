@@ -1,0 +1,55 @@
+class Solution {
+
+    public int checkdepth(TreeNode p, TreeNode q) {
+        if (p == null && q != null) {
+            return -1;
+        }
+        if (q == null && p != null) {
+            return -1;
+        }
+        if (p == null && q == null) {
+            return 0;
+        }
+
+        int left = checkdepth(p.left, q.left);
+        if (left == -1) return -1;
+
+        int right = checkdepth(p.right, q.right);
+        if (right == -1) return -1;
+
+        return 1;
+    }
+
+    public boolean check(TreeNode p, TreeNode q) {
+        if (p == null && q != null) {
+            return false;
+        }
+        if (q == null && p != null) {
+            return false;
+        }
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p.val != q.val) {
+            return false;
+        }
+
+        boolean left = check(p.left, q.left);
+        if (!left) return false;
+
+        boolean right = check(p.right, q.right);
+        if (!right) return false;
+
+        return true;
+    }
+
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        int x = checkdepth(p, q);
+        boolean y = check(p, q);
+
+        if (x == -1 || y == false) {
+            return false;
+        }
+        return true;
+    }
+}
